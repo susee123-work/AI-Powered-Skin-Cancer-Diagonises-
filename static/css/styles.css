@@ -1,0 +1,79 @@
+body {
+  background: linear-gradient(135deg, #ffc0cb, #fce4ec);
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container, .result-container {
+  text-align: center;
+  width: 90%;
+  max-width: 450px;
+}
+
+h1, h2 {
+  color: #222;
+}
+
+form {
+  margin-top: 20px;
+}
+
+.file-label {
+  display: inline-block;
+  background-color: #ffb6c1;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn {
+  margin-top: 15px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff6b81;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #ff3b5f;
+}
+
+#previewImage, .uploaded-image {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.result-text {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.result-text.fake {
+  color: #e53935;
+}
+
+.result-text.real {
+  color: #43a047;
+}

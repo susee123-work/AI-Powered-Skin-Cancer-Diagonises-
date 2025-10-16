@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deepfake Detection Result</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    .card {
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 20px;
+        padding: 30px 40px;
+        text-align: center;
+        box-shadow: 0 0 25px rgba(0,0,0,0.6);
+        animation: fadeIn 1s ease-in-out;
+        max-width: 400px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        animation: slideIn 1s ease forwards;
+    }
+
+    .prediction {
+        font-size: 1.5rem;
+        margin: 15px 0;
+        font-weight: bold;
+        animation: popIn 1s ease forwards;
+    }
+
+    .confidence-bar {
+        width: 100%;
+        background: #333;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 10px 0 20px;
+    }
+
+    .confidence-fill {
+        height: 25px;
+        width: 0%;
+        background: #4caf50;
+        text-align: right;
+        line-height: 25px;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 10px;
+        animation: fillBar 2s forwards;
+    }
+
+    img {
+        max-width: 300px;
+        border-radius: 15px;
+        margin-top: 20px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        transform: scale(0);
+        animation: popImg 0.5s forwards 1s;
+    }
+
+    a.button {
+        display: inline-block;
+        padding: 12px 30px;
+        margin-top: 20px; /* Space below image */
+        color: #fff;
+        background: #ff4b2b;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        animation: fadeIn 2s ease forwards 2s;
+    }
+
+    a.button:hover {
+        background: #ff416c;
+        transform: scale(1.05);
+    }
+
+    /* Animations */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideIn { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    @keyframes fillBar { from { width: 0%; } to { width: {{ confidence }}%; } }
+    @keyframes popImg { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+</style>
+</head>
+<body>
+    <div class="card">
+        <h1>🧠 Deepfake Detection Result</h1>
+
+        <div class="prediction">Prediction: {{ label }}</div>
+
+        <div class="confidence-bar">
+            <div class="confidence-fill">{{ confidence }}%</div>
+        </div>
+
+        {% if uploaded_image %}
+        <img src="{{ uploaded_image }}" alt="Uploaded Image">
+        <!-- Place Go Back button directly below image -->
+        <a href="{{ url_for('index') }}" class="button">Go Back</a>
+        {% else %}
+        <!-- If no image, button stays below prediction -->
+        <a href="{{ url_for('index') }}" class="button">Go Back</a>
+        {% endif %}
+    </div>
+</body>
+</html>
